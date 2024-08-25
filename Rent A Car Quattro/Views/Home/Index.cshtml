@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div style="text-align: center; margin-top: 2em;">
+        <img src="~/images/logo.png" alt="Company Logo" style="max-width: 380px;">
+    </div>
+
+    <div class="jumbotron mt-4">
+        <h1 class="display-4">Dobrodošli u Rent-A-Car Quattro</h1>
+        <p class="lead">Vaše najbolje rješenje za iznajmljivanje vozila.</p>
+        <hr class="my-4">
+        <p>
+            Rent-A-Car kompanija je vodeći pružatelj usluga iznajmljivanja vozila u regiji. Sa širokom flotom vozila koja uključuje
+            sve od ekonomičnih automobila do luksuznih modela, mi osiguravamo da pronađete savršeno vozilo za vaše potrebe.
+        </p>
+        <p>
+            Naša misija je pružiti vrhunsku uslugu i zadovoljstvo naših klijenata. Svako naše vozilo je pažljivo održavano i
+            pregledano kako bi osigurali vašu sigurnost i udobnost. Bilo da putujete poslovno ili planirate obiteljski odmor,
+            naš tim je tu da vam pomogne pronaći pravo vozilo.
+        </p>
+        <p>
+            Zašto odabrati Rent-A-Car:
+        </p>
+        <ul>
+            <li>Širok izbor vozila za sve potrebe i budžete.</li>
+            <li>Jednostavan i brz proces rezervacije.</li>
+            <li>Pristupačne cijene bez skrivenih troškova.</li>
+            <li>24/7 korisnička podrška.</li>
+            <li>Fleksibilne opcije preuzimanja i vraćanja vozila.</li>
+        </ul>
+        <p>
+            Posjetite nas danas i otkrijte zašto smo prvi izbor za iznajmljivanje vozila. Vaše zadovoljstvo nam je na prvom mjestu.
+        </p>
+        @* <a class="btn btn-primary btn-lg" href="/Cars" role="button">Pregled vozila</a> *@
+
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Vozila" asp-action="Index">Pregled vozila</a>
+            <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Lokacija" asp-action="Prikaz">Prikaži mapu poslovnica</a>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <img src="~/images/car1.jpeg" class="img-fluid" alt="Car 1">
+        </div>
+        <div class="col-md-4">
+            <img src="~/images/car2.jpeg" class="img-fluid" alt="Car 2">
+        </div>
+        <div class="col-md-4">
+            <img src="~/images/car3.jpeg" class="img-fluid" alt="Car 3">
+        </div>
+    </div>
+</div>

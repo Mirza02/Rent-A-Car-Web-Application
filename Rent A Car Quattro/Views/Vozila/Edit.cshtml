@@ -1,0 +1,106 @@
+﻿@model Rent_A_Car_Quattro.Models.Vozilo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Vehicle</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Vehicle Details</h4>
+        <hr />
+
+        <form asp-action="Edit" class="needs-validation" novalidate>
+            <input type="hidden" asp-for="ID" />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">Marka:</label>
+                        <input asp-for="marka" class="form-control" />
+                        <span asp-validation-for="marka" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Model:</label>
+                        <input asp-for="model" class="form-control" />
+                        <span asp-validation-for="model" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Kilometraža:</label>
+                        <input asp-for="kilometraza" class="form-control" />
+                        <span asp-validation-for="kilometraza" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Datum zadnjeg servisa:</label>
+                        <input asp-for="datum_zadnjeg_servisa" class="form-control" />
+                        <span asp-validation-for="datum_zadnjeg_servisa" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Broj šasije:</label>
+                        <input asp-for="broj_sasije" class="form-control" />
+                        <span asp-validation-for="broj_sasije" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">Cijena po satu:</label>
+                        <input asp-for="cijena_po_satu" class="form-control" />
+                        <span asp-validation-for="cijena_po_satu" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Cijena po kilometru:</label>
+                        <input asp-for="cijena_po_kilometru" class="form-control" />
+                        <span asp-validation-for="cijena_po_kilometru" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Transmisija:</label>
+                        <select asp-for="Transmisija" class="form-control">
+                            <option value="">Choose...</option>
+                            <option value="Manual">Manual</option>
+                            <option value="Automatic">Automatic</option>
+                        </select>
+                        <span asp-validation-for="Transmisija" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Gorivo:</label>
+                        <select asp-for="Gorivo" class="form-control">
+                            <option value="">Choose...</option>
+                            <option value="Gasoline">Gasoline</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Electric">Electric</option>
+                        </select>
+                        <span asp-validation-for="Gorivo" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <input class="form-check-input" asp-for="vozilo_rezervisano" />
+                        <label class="form-check-label">Vozilo rezervisano</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

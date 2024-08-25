@@ -1,0 +1,78 @@
+﻿@model Rent_A_Car_Quattro.Models.Rezervacija
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Rezervacija</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="pocetak_rezervacije" class="control-label"></label>
+                <input asp-for="pocetak_rezervacije" class="form-control" />
+                <span asp-validation-for="pocetak_rezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kraj_rezervacije" class="control-label"></label>
+                <input asp-for="kraj_rezervacije" class="form-control" />
+                <span asp-validation-for="kraj_rezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vrijeme_rezervacije" class="control-label"></label>
+                <input asp-for="vrijeme_rezervacije" class="form-control" />
+                <span asp-validation-for="vrijeme_rezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kilometraza_rezervacije" class="control-label"></label>
+                <input asp-for="kilometraza_rezervacije" class="form-control" />
+                <span asp-validation-for="kilometraza_rezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="kilometraza_ili_vrijeme" /> @Html.DisplayNameFor(model => model.kilometraza_ili_vrijeme)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="cijena_rezervacija" class="control-label"></label>
+                <input asp-for="cijena_rezervacija" class="form-control" />
+                <span asp-validation-for="cijena_rezervacija" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lokacija_fk" class="control-label"></label>
+                <input asp-for="lokacija_fk" class="form-control" />
+                <span asp-validation-for="lokacija_fk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="korisnik_fk" class="control-label"></label>
+                <input asp-for="korisnik_fk" class="form-control" />
+                <span asp-validation-for="korisnik_fk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="placanje_fk" class="control-label"></label>
+                <input asp-for="placanje_fk" class="form-control" />
+                <span asp-validation-for="placanje_fk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vozilo_fk" class="control-label"></label>
+                <input asp-for="vozilo_fk" class="form-control" />
+                <span asp-validation-for="vozilo_fk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Rent_A_Car_Quattro.Models.Vozilo>
+
+@{
+    ViewData["Title"] = "Pregled dostupnih vozila";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Pregled dostupnih vozila</h1>
+    @if (User.IsInRole("Administrator"))
+    {
+        <div class="mb-3">
+            <a asp-action="Create" class="btn btn-success">Dodaj novo vozilo</a>
+        </div>
+    }
+
+    @using (Html.BeginForm("Index", "Vozila", FormMethod.Get, new { @class = "mb-4" }))
+    {
+        <div class="mb-3">
+            <label class="form-label">Filter by Marka:</label>
+            <input type="text" name="markaFilter" class="form-control" value="@ViewBag.CurrentFilter" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Filter by Model:</label>
+            <input type="text" name="modelFilter" class="form-control" value="@ViewBag.CurrentFilter" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Maksimalna kilometraža:</label>
+            <input type="number" name="kmFilter" class="form-control" value="@ViewBag.CurrentFilter" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Broj vrata:</label>
+            <input type="number" name="vrataFilter" class="form-control" value="@ViewBag.CurrentFilter" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Maksimalna snaga motora:</label>
+            <input type="number" name="snagaMotora" class="form-control" value="@ViewBag.CurrentFilter" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Lokacija vozila:</label>
+            <input type="text" name="lokacijaFilter" class="form-control" value="@ViewBag.CurrentFilter" />
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a href="/Vozila/Index" class="btn btn-secondary">Reset</a>
+        </div>
+    }
+
+    <table class="table table-striped table-hover mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>Kilometraža</th>
+                @if (User.IsInRole("Mehanicar"))
+                {
+                    <th>Datum zadnjeg servisa</th>
+                    <th>Datum sljedećeg servisa</th>
+                }
+                <th>Cijena po satu</th>
+                <th>Cijena po kilometru</th>
+                <th>Transmisija</th>
+                <th>Vrsta goriva</th>
+                <th>Broj šasije</th>
+                <th>Broj vrata</th>
+                <th>Snaga motora</th>
+                <th>Grad</th>
+                @if (User.IsInRole("Administrator"))
+                {
+                    <th>Akcije</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.marka)</td>
+                    <td>@Html.DisplayFor(modelItem => item.model)</td>
+                    <td>@Html.DisplayFor(modelItem => item.kilometraza) km</td>
+                    @if (User.IsInRole("Mehanicar"))
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.datum_zadnjeg_servisa)</td>
+                        <td>@Html.DisplayFor(modelItem => item.datum_sljedeceg_servisa)</td>
+                    }
+                    <td>@Html.DisplayFor(modelItem => item.cijena_po_satu) KM/h</td>
+                    <td>@Html.DisplayFor(modelItem => item.cijena_po_kilometru) KM/km</td>
+                    <td>@Html.DisplayFor(modelItem => item.Transmisija)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Gorivo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.broj_sasije)</td>
+                    <td>@Html.DisplayFor(modelItem => item.broj_vrata)</td>
+                    <td>@Html.DisplayFor(modelItem => item.engine_size) kw</td>
+                    <td>@Html.DisplayFor(modelItem => item.grad)</td>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Uredi</a>
+                            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-sm btn-info">Detalji</a>
+                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Obriši</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

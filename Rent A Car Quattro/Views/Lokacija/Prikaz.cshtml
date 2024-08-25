@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Rent_A_Car_Quattro.Models.Poslovnica>
+
+@{
+    ViewData["Title"] = "Prikaz";
+}
+
+<h1>Prikaz lokacija</h1>
+<h2 class="modern-h2">
+    Naše poslovnice možete pronaći na lokacijama:<br>
+    @foreach (var loc in Model)
+    {
+        <span>@loc.grad</span><br />
+    }
+</h2>
+<div style="margin-top: 2%; margin-bottom: 2%">
+    <div id="myMap" style="position:relative;width:1280px;height:400px;"></div>
+</div>
+
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+
+<script type='text/javascript'>
+    function GetMap() {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'Apr-sGZFwMBObp5T_pkLDksk3RuUEx9__FobHk4funj0WAxn4azcefQ9cFvP55Mg',
+            center: new Microsoft.Maps.Location(43.8563, 18.4131),
+            mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+            zoom: 10
+        });
+
+        var infobox = new Microsoft.Maps.Infobox(map.getCenter(), {
+            visible: false,
+            offset: new Microsoft.Maps.Point(0, 25),
+            style: {
+                backgroundColor: 'white',
+                borderColor: 'black',
+                padding: '10px',
+                borderRadius: '8px',
+                boxShadow: '0 0 15px rgba(0,0,0,0.3)',
+                zIndex: 1000,
+                textAlign: 'left',
+                width: 250,
+                fontSize: '14px'
+            }
+        });
+        infobox.setMap(map);
+
+        // Array of locations
+        var locations = [
+            @foreach (var loc in Model)
+            {
+                @: {
+                @: location: new Microsoft.Maps.Location(@loc.latitude, @loc.longitude),
+                @: title: '@loc.grad',
+                @: description: '@loc.opis',
+                @: },
+            }
+        ];
+
+        // Function to handle pushpin click event
+        function pushpinClicked(e) {
+            if (e.target.metadata) {
+                var content = '<div><strong>' + e.target.metadata.title + '</strong><br/>' +
+                    e.target.metadata.description + '</div>';
+                infobox.setOptions({
+                    location: e.target.getLocation(),
+                    title: e.target.metadata.title,
+                    description: content,
+                    visible: true
+                });
+            }
+        }
+
+        // Add pushpins to the map
+        locations.forEach(function (loc) {
+            var pin = new Microsoft.Maps.Pushpin(loc.location, {
+                icon: loc.icon,
+                anchor: new Microsoft.Maps.Point(12, 39) // Adjust anchor point as needed
+            });
+            pin.metadata = {
+                title: loc.title,
+                description: loc.description
+            };
+            Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked);
+            map.entities.push(pin);
+        });
+    }
+</script>
+
+<style>
+    .modern-h2 {
+        font-size: 1.0em;
+        font-weight: 400;
+        color: #333;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-family: 'Arial', sans-serif;
+        line-height: 1.4;
+        text-align: left;
+    }
+</style>

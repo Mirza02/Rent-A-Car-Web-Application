@@ -1,0 +1,129 @@
+﻿@model Rent_A_Car_Quattro.Models.Vozilo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="display-4">Create Vozilo</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="marka" class="control-label">Marka</label>
+                <input asp-for="marka" class="form-control" placeholder="Unesite marku" />
+                <span asp-validation-for="marka" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="model" class="control-label">Model</label>
+                <input asp-for="model" class="form-control" placeholder="Unesite model" />
+                <span asp-validation-for="model" class="text-danger"></span>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="kilometraza" class="control-label">Kilometraza</label>
+                    <input asp-for="kilometraza" class="form-control" placeholder="Unesite kilometrazu" />
+                    <span asp-validation-for="kilometraza" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="datum_zadnjeg_servisa" class="control-label">Datum zadnjeg servisa</label>
+                    <input asp-for="datum_zadnjeg_servisa" class="form-control" type="date" />
+                    <span asp-validation-for="datum_zadnjeg_servisa" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="cijena_po_satu" class="control-label">Cijena po satu</label>
+                    <input asp-for="cijena_po_satu" class="form-control" placeholder="Unesite cijenu po satu" />
+                    <span asp-validation-for="cijena_po_satu" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="cijena_po_kilometru" class="control-label">Cijena po kilometru</label>
+                    <input asp-for="cijena_po_kilometru" class="form-control" placeholder="Unesite cijenu po kilometru" />
+                    <span asp-validation-for="cijena_po_kilometru" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Transmisija" class="control-label">Transmisija</label>
+                    <select asp-for="Transmisija" class="form-control">
+                        <option value="">Odaberite transmisiju</option>
+                        @foreach (var item in Enum.GetValues(typeof(VrstaTransmisije)))
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Transmisija" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="Gorivo" class="control-label">Gorivo</label>
+                    <select asp-for="Gorivo" class="form-control">
+                        <option value="">Odaberite gorivo</option>
+                        @foreach (var item in Enum.GetValues(typeof(VrstaGoriva)))
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Gorivo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" asp-for="vozilo_rezervisano" />
+                <label class="form-check-label" asp-for="vozilo_rezervisano">Vozilo rezervisano</label>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="broj_sasije" class="control-label">Broj sasije</label>
+                    <input asp-for="broj_sasije" class="form-control" placeholder="Unesite broj sasije" />
+                    <span asp-validation-for="broj_sasije" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="broj_vrata" class="control-label">Broj vrata</label>
+                    <input asp-for="broj_vrata" class="form-control" placeholder="Unesite broj vrata" />
+                    <span asp-validation-for="broj_vrata" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="engine_size" class="control-label">Snaga motora</label>
+                    <input asp-for="engine_size" class="form-control" placeholder="Unesite snagu motora" />
+                    <span asp-validation-for="engine_size" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="grad" class="control-label">Grad</label>
+                    <input asp-for="grad" class="form-control" placeholder="Unesite grad" />
+                    <span asp-validation-for="grad" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

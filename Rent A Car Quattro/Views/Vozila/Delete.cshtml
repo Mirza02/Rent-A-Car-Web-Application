@@ -1,0 +1,94 @@
+﻿@model Rent_A_Car_Quattro.Models.Vozilo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="mt-4">Delete Vehicle</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Da li ste sigurni da želite izbrisati ovo vozilo?</h3>
+
+        <h4 class="mt-4">Detalji vozila</h4>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.marka)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.marka)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.model)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.model)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.kilometraza)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.kilometraza)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.datum_zadnjeg_servisa)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.datum_zadnjeg_servisa)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.cijena_po_satu)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.cijena_po_satu)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.cijena_po_kilometru)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.cijena_po_kilometru)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Transmisija)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Transmisija)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Gorivo)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Gorivo)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.vozilo_rezervisano)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.vozilo_rezervisano)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.broj_sasije)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.broj_sasije)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="ID" />
+            <button type="submit" class="btn btn-danger">Delete</button> |
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+</div>

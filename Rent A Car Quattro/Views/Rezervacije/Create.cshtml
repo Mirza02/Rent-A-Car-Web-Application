@@ -1,0 +1,68 @@
+﻿@model Rent_A_Car_Quattro.Models.Rezervacija
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Rezervacija</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="pocetak_rezervacije" class="control-label">Pocetak rezervacije</label>
+                <input asp-for="pocetak_rezervacije" class="form-control" type="datetime-local" value="@Model.pocetak_rezervacije.ToString("yyyy-MM-ddTHH:mm")" />
+                <span asp-validation-for="pocetak_rezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kraj_rezervacije" class="control-label">Kraj rezervacije</label>
+                <input asp-for="kraj_rezervacije" class="form-control" type="datetime-local" value="@Model.kraj_rezervacije.ToString("yyyy-MM-ddTHH:mm")" />
+                <span asp-validation-for="kraj_rezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vrijeme_rezervacije" class="control-label">Vrijeme rezervacije (u satima)</label>
+                <input asp-for="vrijeme_rezervacije" class="form-control" />
+                <span asp-validation-for="vrijeme_rezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="placanje_fk" class="control-label">Placanje</label>
+                <input asp-for="placanje_fk" class="form-control" />
+                <span asp-validation-for="placanje_fk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="kilometraza_rezervacije" class="form-control" type="hidden" value="0" />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="kilometraza_ili_vrijeme" type="hidden" value="true" /> @Html.DisplayNameFor(model => model.kilometraza_ili_vrijeme)
+                </label>
+            </div>
+            <div class="form-group">
+                <input asp-for="cijena_rezervacija" class="form-control" type="hidden" value="0" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="lokacija_fk" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="korisnik_fk" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="vozilo_fk" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

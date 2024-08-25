@@ -1,0 +1,92 @@
+﻿@model Rent_A_Car_Quattro.Models.Vozilo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Vozilo</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                Marka:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.marka)
+            </dd>
+            <dt class="col-sm-3">
+                Model:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.model)
+            </dd>
+            <dt class="col-sm-3">
+                Kilometraža:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.kilometraza)
+            </dd>
+            <dt class="col-sm-3">
+                Datum zadnjeg servisa:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.datum_zadnjeg_servisa)
+            </dd>
+            <dt class="col-sm-3">
+                Cijena po satu:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.cijena_po_satu)
+            </dd>
+            <dt class="col-sm-3">
+                Cijena po kilometru:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.cijena_po_kilometru)
+            </dd>
+            <dt class="col-sm-3">
+                Transmisija:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Transmisija)
+            </dd>
+            <dt class="col-sm-3">
+                Gorivo:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Gorivo)
+            </dd>
+            <dt class="col-sm-3">
+                Vozilo rezervisano:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.vozilo_rezervisano)
+            </dd>
+            <dt class="col-sm-3">
+                Broj šasije:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.broj_sasije)
+            </dd>
+            <dt class="col-sm-3">
+                Broj vrata:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.broj_vrata)
+            </dd>
+            <dt class="col-sm-3">
+                Snaga motora:
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.engine_size)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model?.ID" class="btn btn-primary">Edit</a> |
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
